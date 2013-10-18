@@ -1,0 +1,15 @@
+.loader {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    padding: 10px;
+    background-color: yellow;
+    font-size: 16px;
+	color: #666;
+	color: #666;
+	text-align: center;
+	z-index: 1000;
+}
+.loader.off {
+    right: -100%;
+}

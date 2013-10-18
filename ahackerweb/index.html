@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="ahw">
+    <head>
+        <meta charset="utf-8">
+        <title>AHackerWeb</title>
+        
+        <meta name="apple-mobile-web-app-title" content="AHackerWeb">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="shortcut icon" href="icons/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="icons/touch-icon-144.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="icons/touch-icon-114.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="icons/touch-icon-72.png">
+        <link rel="apple-touch-icon-precomposed" href="icons/touch-icon.png">
+        
+        <link rel="stylesheet" href="css/hn-web.css"/>
+        <link rel="stylesheet" href="css/default.css"/>
+    </head>
+    <body>
+        <div class="loader off" ng-class="{off: !xhrPending}">Loading&hellip;</div>
+        <div ng-view></div>
+        
+        <script src="http://code.angularjs.org/1.2.0-rc.3/angular.min.js"></script>
+        <script src="http://code.angularjs.org/1.2.0-rc.3/angular-route.min.js"></script>
+        <script src="ahw.js"></script>
+        <script src="js/services/hnapi.js"></script>
+        <script src="js/controllers/home.js"></script>
+        <script src="js/controllers/comments.js"></script>
+    </body>
+</html>

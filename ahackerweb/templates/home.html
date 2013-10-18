@@ -1,0 +1,28 @@
+<div class="view" id="view-home">
+	<header>
+		<a href="#/about" class="header-button header-button-left"><button>About</button></a>
+		<h1 style="margin: 0 65px;">AHackerWeb</h1>
+		<a class="header-button header-button-icon header-button-right" ng-click="refresh()"><button><i class="icon-refresh">Refresh</i></button></a>
+	</header>
+	<div class="scroll">
+		<section>
+		    <ul class="tableview tableview-links">
+		        <li ng-repeat="post in news" class="post-{{post.type}}">
+		            <a href="{{markupStory(post)}}">
+		                <div class="number">{{$index + 1}}.</div>
+		                <div class="story">
+		                    <b>{{post.title}}</b>
+		                    <span class="metadata">
+		                        <span class="link-text" ng-show="post.domain">{{post.domain}}<br></span>
+		                        <span class="inline-block" ng-show="post.user"><ng-pluralize count="post.points" when="pointForms"></ng-pluralize> by {{post.user}}</span>
+		                        <span class="inline-block">{{post.time_ago}}</span>
+		                        <span class="inline-block" ng-show="post.user"> &middot; <ng-pluralize count="post.comments_count" when="commentForms"></ng-pluralize></span>
+		                    </span>
+		                </div>
+		            </a>
+		            <a href="#/item/{{post.id}}" class="detail-disclosure-button" ng-show="post.comments_count && post.domain"><span></span></a>
+		        </li>
+		    </ul>
+		</section>
+	</div>
+</div>
