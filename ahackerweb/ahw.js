@@ -12,7 +12,8 @@ app.config(function($routeProvider) {
         }
     })
     .when('/about', {
-        templateUrl: 'templates/about.html'
+        templateUrl: 'templates/about.html',
+        controller: 'aboutCtrl'
     })
     .when('/item/:id', {
           templateUrl: 'templates/comments.html',
