@@ -709,7 +709,7 @@ ol.grouped-tableview-links li>a.tappable-active{
 }
 
 #y-icon{
-	background: transparent url(../../icons/touch-icon-120.png) no-repeat;
+	background: transparent url(../icons/touch-icon-120.png) no-repeat;
 	background-size: 60px 60px;
 	width: 60px;
 	height: 60px;
@@ -1121,7 +1121,7 @@ ol.grouped-tableview-links li>a.tappable-active{
 	}
 
 	#y-icon{
-		background: transparent url(../../icons/touch-icon-152.png) no-repeat;
+		background: transparent url(../icons/touch-icon-152.png) no-repeat;
 		background-size: 76px 76px;
 		width: 76px;
 		height: 76px;
