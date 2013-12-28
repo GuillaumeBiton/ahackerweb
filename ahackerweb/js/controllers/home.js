@@ -3,6 +3,12 @@
 app.controller("homeCtrl", function($rootScope, $scope, news, hnapi) {
     $scope.news = news.data;
     
+    $scope.news2 = function() {
+        hnapi.news2().then(function(result){
+            $scope.news = $scope.news.concat(result.data);
+        });
+    };
+    
     $scope.refresh = function() {
         var date = (+new Date());
         hnapi.news(date).then(function(result){

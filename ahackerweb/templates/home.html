@@ -22,6 +22,7 @@
 		            </a>
 		            <a href="#/item/{{post.id}}" class="detail-disclosure-button" ng-show="post.comments_count && post.domain"><span></span></a>
 		        </li>
+                <li ng-show="news.length <= 30"><a class="more-link" ng-click="news2()">More…<span class="loader"></span></a></li>
 		    </ul>
 		</section>
 	</div>
