@@ -1,4 +1,4 @@
-<div class="view" id="view-home">
+<div class="view" id="view-home" ng-class="{hidden: post && !isWideScreen, hidden: post && isWebStyle}">
 	<header>
 		<a href="#/about" class="header-button header-button-left"><button>About</button></a>
 		<h1 style="margin: 0 65px;">AHackerWeb</h1>
@@ -24,6 +24,57 @@
 		        </li>
                 <li ng-show="news.length <= 30"><a class="more-link" ng-click="news2()">More…<span class="loader"></span></a></li>
 		    </ul>
+		</section>
+	</div>
+</div>
+<div class="view" id="view-comments" ng-class="{hidden: !isWideScreen, hidden: !post}">
+	<header>
+		<a href="#/" class="header-button header-button-left header-back-button"><button>News</button></a>
+		<h1 style="margin: 0 65px;">{{post.title}}</h1>
+	</header>
+	<div class="scroll">
+		<section>
+		    <div class="post-content">
+		        <header>
+		            <h1>
+		                <a href="{{post.url}}">{{post.title}}<br>
+		                    <span class="link-text" ng-show="post.user && post.domain">{{post.domain}}</span>
+		                </a>
+		            </h1>
+		            <p class="metadata">
+		                <span class="inline-block" ng-show="post.user"><ng-pluralize count="post.points" when="pointForms"></ng-pluralize> by {{post.user}}</span>
+		                <span class="inline-block">{{post.time_ago}} &middot; <ng-pluralize count="post.comments_count" when="commentForms"></ng-pluralize></span>
+		                <a href="http://news.ycombinator.com/item?id={{post.id}}" target="_blank" class="external-link">news.ycombinator.com/item?id={{post.id}}</a>
+		            </p>
+		        </header>
+		        <section class="grouped-tableview" ng-show="post.content || post.poll">
+		            <p ng-bind-html="deliberatelyTrustDangerousSnippet(post.content)" ng-show="post.content"></p>
+		            <ul class="poll" ng-show="post.poll">
+		                <li ng-repeat="item in post.poll">
+		                    <span class="poll-details"><b>{{item.item}}</b> <span class="points"><ng-pluralize count="item.points" when="pointForms"></ng-pluralize></span></span>
+		                    <div class="poll-bar"><span style="width: {{pollPourcentage(item.points)}}%"></span></div>
+		                </li>
+		            </ul>
+		        </section>
+		    </div>
+		    <section class="comments">
+		        <ul>
+		           <li ng-repeat="comment in post.comments">
+		               <p class="metadata">
+		                   <b>{{comment.user}}</b> <time><a href="#" class="comment-permalink">{{comment.time_ago}}</a></time>
+		               </p>
+		               <p ng-bind-html="deliberatelyTrustDangerousSnippet(comment.content)"></p>
+		               <ul>
+		                   <li ng-repeat="comment in comment.comments">
+		                       <p class="metadata">
+		                           <b>{{comment.user}}</b> <time><a href="#" class="comment-permalink">{{comment.time_ago}}</a></time>
+		                       </p>
+		                       <p ng-bind-html="deliberatelyTrustDangerousSnippet(comment.content)"></p>
+		                   </li> 
+		                </ul>
+		           </li> 
+		        </ul>
+		    </section>
 		</section>
 	</div>
 </div>

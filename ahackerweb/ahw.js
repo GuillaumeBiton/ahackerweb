@@ -8,6 +8,9 @@ app.config(function($routeProvider) {
         resolve: {
             news: function(hnapi) {
                 return hnapi.news();
+            },
+            post: function($route, hnapi) {
+                return ($route.current.params.id) ? hnapi.item($route.current.params.id) : null;
             }
         }
     })
@@ -16,9 +19,12 @@ app.config(function($routeProvider) {
         controller: 'aboutCtrl'
     })
     .when('/item/:id', {
-          templateUrl: 'templates/comments.html',
-          controller: 'commentsCtrl',
+          templateUrl: 'templates/home.html',
+          controller: 'homeCtrl',
           resolve: {
+            news: function(hnapi) {
+                return hnapi.news();
+            },
             post: function($route, hnapi) {
                 return hnapi.item($route.current.params.id);
             }       
@@ -30,6 +36,9 @@ app.config(function($routeProvider) {
 });
 
 app.constant('api', { url : 'http://node-hnapi-eu.herokuapp.com/' });
+app.constant('wideScreen', function() {
+    return window.innerWidth >=640
+});
 
 app.config(function ($provide, $httpProvider) {
     $provide.factory('xhrIndicator', function($q, $rootScope, api) {
