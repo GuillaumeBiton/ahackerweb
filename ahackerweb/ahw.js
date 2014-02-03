@@ -11,12 +11,26 @@ app.config(function($routeProvider) {
             },
             post: function($route, hnapi) {
                 return ($route.current.params.id) ? hnapi.item($route.current.params.id) : null;
+            },
+            aboutModal: function() {
+                return false;
             }
         }
     })
     .when('/about', {
-        templateUrl: 'templates/about.html',
-        controller: 'aboutCtrl'
+        templateUrl: 'templates/home.html',
+        controller: 'homeCtrl',
+        resolve: {
+            news: function(hnapi) {
+                return hnapi.news();
+            },
+            post: function($route, hnapi) {
+                return ($route.current.params.id) ? hnapi.item($route.current.params.id) : null;
+            },   
+            aboutModal: function() {
+                return true;
+            }
+        }
     })
     .when('/item/:id', {
           templateUrl: 'templates/home.html',
@@ -27,7 +41,10 @@ app.config(function($routeProvider) {
             },
             post: function($route, hnapi) {
                 return hnapi.item($route.current.params.id);
-            }       
+            },
+              aboutModal: function() {
+                return false;
+            }
           }
     })
     .otherwise({
