@@ -2,60 +2,15 @@ var app = angular.module("ahw", ['ngRoute']);
 
 app.config(function($routeProvider) {
     $routeProvider
-    .when('/', {
-        templateUrl: 'templates/home.html',
-        controller: 'homeCtrl',
-        resolve: {
-            news: function(hnapi) {
-                return hnapi.news();
-            },
-            post: function($route, hnapi) {
-                return ($route.current.params.id) ? hnapi.item($route.current.params.id) : null;
-            },
-            aboutModal: function() {
-                return false;
-            }
-        }
-    })
-    .when('/about', {
-        templateUrl: 'templates/home.html',
-        controller: 'homeCtrl',
-        resolve: {
-            news: function(hnapi) {
-                return hnapi.news();
-            },
-            post: function($route, hnapi) {
-                return ($route.current.params.id) ? hnapi.item($route.current.params.id) : null;
-            },   
-            aboutModal: function() {
-                return true;
-            }
-        }
-    })
-    .when('/item/:id', {
-          templateUrl: 'templates/home.html',
-          controller: 'homeCtrl',
-          resolve: {
-            news: function(hnapi) {
-                return hnapi.news();
-            },
-            post: function($route, hnapi) {
-                return hnapi.item($route.current.params.id);
-            },
-              aboutModal: function() {
-                return false;
-            }
-          }
-    })
+    .when('/', {})
+    .when('/about', {})
+    .when('/item/:id', {})
     .otherwise({
         redirectTo: '/'
     });
 });
 
 app.constant('api', { url : 'http://node-hnapi-eu.herokuapp.com/' });
-app.constant('wideScreen', function() {
-    return window.innerWidth >=640
-});
 
 app.config(function ($provide, $httpProvider) {
     $provide.factory('xhrIndicator', function($q, $rootScope, api) {
@@ -72,4 +27,11 @@ app.config(function ($provide, $httpProvider) {
         }
     });
     $httpProvider.interceptors.push('xhrIndicator');
+});
+
+app.run(function ($rootScope, $route, $location, $window) {
+  window.onresize = function() {
+    $rootScope.isWideScreen = (window.innerWidth >= 640) ? true : false;
+    $route.reload();
+  }
 });

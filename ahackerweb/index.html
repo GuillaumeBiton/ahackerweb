@@ -16,17 +16,15 @@
         <link rel="stylesheet" href="css/hw-web.css"  class="theme" media="screen"/>
         <link rel="stylesheet" href="css/hw-ios.css" class="theme" disabled=""/>
         <link rel="stylesheet" href="css/hw-ios-2.css" class="theme" disabled=""/>
-        <link rel="stylesheet" href="css/default.css"/>
+<!--        <link rel="stylesheet" href="css/default.css"/>-->
     </head>
     <body>
-        <div class="loader off" ng-class="{off: !xhrPending}">Loading&hellip;</div>
-        <div ng-view></div>
+        <div ng-include="'templates/home.html'" ng-controller="homeCtrl"></div>
         
         <script src="http://code.angularjs.org/1.2.10/angular.min.js"></script>
         <script src="http://code.angularjs.org/1.2.10/angular-route.min.js"></script>
         <script src="ahw.js"></script>
         <script src="js/services/hnapi.js"></script>
         <script src="js/controllers/home.js"></script>
-        <script src="js/controllers/about.js"></script>
     </body>
 </html>
