@@ -1,4 +1,4 @@
-<div class="view" id="view-home" ng-class="{hidden: (post && !isWideScreen)|| (post && isWebStyle && !isWideScreen) || (about && isWebStyle && !isWideScreen) }">
+<div class="view" id="view-home" ng-class="{hidden: (isWebKit || !isWideScreen) && (about || post) }">
 	<header>
 		<a href="#/about" class="header-button header-button-left"><button>About</button></a>
 		<h1 style="margin: 0 65px;">AHackerWeb</h1>
@@ -29,7 +29,7 @@
 	</div>
 </div>
 
-<div class="view" id="view-comments" ng-class="{hidden: !isWideScreen || (!post && !isWideScreen)}" ng-include="'templates/post.html'"></div>
+<div class="view" id="view-comments" ng-class="{hidden: (isWebKit || !isWideScreen) && (about || !post) }" ng-include="'templates/post.html'"></div>
 
 <div class="view" id="view-about" ng-include="about&&'templates/about.html'">	
 </div>
