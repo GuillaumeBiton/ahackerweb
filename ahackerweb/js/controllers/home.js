@@ -74,7 +74,7 @@ app.controller("homeCtrl", function($rootScope, $scope, $location, $routeParams,
     });
     linkEls[sheetIndex].disabled = true;
     linkEls[(sheetIndex + 1) % linkEls.length].disabled = false;
-    console.log(webStyle());
+    $scope.isWebStyle = webStyle();
   };
   
 });
